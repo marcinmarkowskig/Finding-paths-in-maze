@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>SWDiS Projekt</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./lib/themes/jquery.ui.all.css" />
+
+    <script type="text/javascript" src="./lib/raphael-min.js"></script>
+    <script type="text/javascript" src="./lib/es5-shim.min.js"></script>
+    <script type="text/javascript" src="./lib/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./lib/state-machine.min.js"></script>
+    <script type="text/javascript" src="./lib/async.min.js"></script>
+
+    <script type="text/javascript" src="./lib/ui/jquery.ui.core.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.widget.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.mouse.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.draggable.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.accordion.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.slider.min.js"></script>
+
+
+    <script type="text/javascript" src="./lib/pathfinding-browser.min.js"></script>
+
+    <script type="text/javascript" src="./js/view.js"></script>
+    <script type="text/javascript" src="./js/controller.js"></script>
+    <script type="text/javascript" src="./js/panel.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+  </head>
+  <body>
+    <div id="draw_area"></div>
+
+    <div id="instructions_panel" class="panel">
+      <header>
+        <h2 class="header_title">Instrukcjia</h2>
+        <span id="hide_instructions">Ukryj</span>
+      </header>
+       Kliknij w <span class = "white"> biale </span> siatki i przeciągnij mysza, aby narysowac przeszkod. </br>
+       Przeciągnij <span class = "green"> zielony </span> wezel, aby ustawic pozycję startowa. </br>
+       Przeciągnij <span class = "red"> czerwony  </span> węzel, aby ustawic pozycję koncowa. </br>
+       Wybierz algorytm z panelu po prawej stronie. </br>
+       Kliknij przycisk "Start Poszuku" wyszukiwanie w prawym dolnym rogu, aby uruchomic animację.
+    </div>
+    <div  id="new_panel">
+
+    </div>
+    <div id="algorithm_panel" class="panel right_panel">
+      <header><h2 class="header_title">Wybrac Algorytm</h2></header>
+
+      <div class="accordion">
+        <h3 id="astar_header"><a href="#">Algorytm 1: A*</a></h3>
+        <div id="astar_section" class="finder_section">
+          <header class="option_header">
+            <h3>Heuristic</h3>
+          </header>
+          <div id="astar_heuristic" class="sub_options">
+          <input type="radio" name="astar_heuristic" value="manhattan" checked />
+          <label class="option_label">Manhattan</label> <br>
+          <input type="radio" name="astar_heuristic" value="euclidean"/>
+          <label class="option_label">Euclidean</label> <br>
+          <input type="radio" name="astar_heuristic" value="chebyshev"/>
+          <label class="option_label">Chebyshev</label> <br>
+          </div>
+        </div>
+
+        <h3 id="astarBi_header"><a href="#">Algorytm 2: Bi-directional A*</a></h3>
+        <div id="astarBi_section" class="finder_section">
+          <header class="option_header">
+            <h3>Heuristic</h3>
+          </header>
+          <div id="astar_heuristic" class="sub_options">
+          <input type="radio" name="astarBi_heuristic" value="manhattan" checked />
+          <label class="option_label">Manhattan</label> <br>
+          <input type="radio" name="astarBi_heuristic" value="euclidean"/>
+          <label class="option_label">Euclidean</label> <br>
+          <input type="radio" name="astarBi_heuristic" value="chebyshev"/>
+          <label class="option_label">Chebyshev</label> <br>
+          </div>
+        </div>
+
+        <h3 id="ida_header"><a href="#">Algorytm 3: IDA</a></h3>
+        <div id="ida_section" class="finder_section">
+          <header class="option_header">
+            <h3>Heuristic</h3>
+          </header>
+          <div id="ida_heuristic" class="sub_options">
+          <input type="radio" name="ida_heuristic" value="manhattan" checked />
+          <label class="option_label">Manhattan</label> <br>
+          <input type="radio" name="ida_heuristic" value="euclidean"/>
+          <label class="option_label">Euclidean</label> <br>
+          <input type="radio" name="ida_heuristic" value="chebyshev"/>
+          <label class="option_label">Chebyshev</label> <br>
+          </div>
+        </div>
+
+		    <h3 id="bestfirst_header"><a href="#">Algorytm 4: Best First Search</a></h3>
+        <div id="bestfirst_section" class="finder_section">
+          <header class="option_header">
+            <h3>Heuristic</h3>
+          </header>
+          <div id="bestfirst_heuristic" class="sub_options">
+          <input type="radio" name="bestfirst_heuristic" value="manhattan" checked />
+          <label class="option_label">Manhattan</label> <br>
+          <input type="radio" name="bestfirst_heuristic" value="euclidean"/>
+          <label class="option_label">Euclidean</label> <br>
+          <input type="radio" name="bestfirst_heuristic" value="chebyshev"/>
+          <label class="option_label">Chebyshev</label> <br>
+          </div>
+        </div>
+
+		    <h3 id="bestfirstBi_header"><a href="#">Algorytm 5: Bi-directional<br>Best First Search</a></h3>
+        <div id="bestfirstBi_section" class="finder_section">
+          <header class="option_header">
+            <h3>Heuristic</h3>
+          </header>
+          <div id="bestfirstBi_heuristic" class="sub_options">
+          <input type="radio" name="bestfirstBi_heuristic" value="manhattan" checked />
+          <label class="option_label">Manhattan</label> <br>
+          <input type="radio" name="bestfirstBi_heuristic" value="euclidean"/>
+          <label class="option_label">Euclidean</label> <br>
+          <input type="radio" name="bestfirstBi_heuristic" value="chebyshev"/>
+          <label class="option_label">Chebyshev</label> <br>
+          </div>
+        </div>
+
+        <h3 id="orth_jump_point_header"><a href="#">Algorytm 6: Orthogonal Jump Point Search</a></h3>
+        <div id="orth_jump_point_section" class="finder_section">
+          <header class="option_header">
+            <h3>Heuristic</h3>
+          </header>
+          <div id="orth_jump_point_heuristic" class="sub_options">
+          <input type="radio" name="orth_jump_point_heuristic" value="manhattan" checked />
+          <label class="option_label">Manhattan</label> <br>
+          <input type="radio" name="orth_jump_point_heuristic" value="euclidean"/>
+          <label class="option_label">Euclidean</label> <br>
+          <input type="radio" name="orth_jump_point_heuristic" value="chebyshev"/>
+          <label class="option_label">Chebyshev</label> <br>
+          </div>
+        </div>
+
+        </div>
+
+        </div>
+
+      </div><!-- .accordion -->
+    </div><!-- #algorithm_panel -->
+
+     <div id="play_panel" class="panel right_panel">
+	  <button id="button1" class="control_button">Start Algorytmu</button>
+      <button id="button2" class="control_button">Zatrzymanie Algorytmu</button>
+      <button id="button3" class="control_button">Usun Wszystko</button>
+    </div>
+
+    <div id="stats"></div>
+  </body>
+  <!-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
+</html>
+
+<!-- <div class="new_panel_row" id="new_panel_row">
+<div class="new_panel_col_top">A*</div>
+<div id="astar_section">
+<div id="astar_heuristic">
+<div class="new_panel_col_bottom" id="new_panel_col_bottom_first">
+<input id="astar_header" class="finder_section" type="radio" name="astar_heuristic" value="manhattan" checked />
+<label class="option_label">Manhattan</label>
+</div>
+<div class="new_panel_col_bottom">
+<input id="astar_header" class="finder_section" type="radio" name="astar_heuristic" value="euclidean"/>
+<label class="option_label">Euclidean</label>
+</div>
+<div class="new_panel_col_bottom" id="new_panel_col_bottom_second">
+<input id="astar_header" type="radio" name="astar_heuristic" value="chebyshev"/>
+<label class="option_label">Chebyshev</label>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="new_panel_row" id="new_panel_row">
+<div class="new_panel_col_top">Bi-directional A*</div>
+<div id="astarBi_section">
+<div id="astarBi_heuristic">
+<div class="new_panel_col_bottom" id="new_panel_col_bottom_first">
+<input id="astarBi_header" type="radio" name="astarBi_heuristic" value="manhattan" checked />
+<label class="option_label">Manhattan</label>
+</div>
+<div class="new_panel_col_bottom">
+<input id="astarBi_header" type="radio" name="astarBi_heuristic" value="euclidean"/>
+<label class="option_label">Euclidean</label>
+</div>
+<div class="new_panel_col_bottom" id="new_panel_col_bottom_second">
+<input id="astarBi_header" type="radio" name="astarBi_heuristic" value="chebyshev"/>
+<label class="option_label">Chebyshev</label>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="new_panel_row" id="new_panel_row">
+<div class="new_panel_col_top">A*</div>
+<div id="astar_section">
+<div id="astar_heuristic">
+<div class="new_panel_col_bottom" id="new_panel_col_bottom_first">
+<input id="astar_header" type="radio" name="astar_heuristic" value="manhattan" checked />
+<label class="option_label">Manhattan</label>
+</div>
+<div class="new_panel_col_bottom">
+<input id="astar_header" type="radio" name="astar_heuristic" value="euclidean"/>
+<label class="option_label">Euclidean</label>
+</div>
+<div class="new_panel_col_bottom" id="new_panel_col_bottom_second">
+<input id="astar_header" type="radio" name="astar_heuristic" value="chebyshev"/>
+<label class="option_label">Chebyshev</label>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="new_panel_row" id="new_panel_row">
+<div class="new_panel_col_top">A*</div>
+<div id="astar_section">
+<div id="astar_heuristic">
+<div class="new_panel_col_bottom" id="new_panel_col_bottom_first">
+  <input id="astar_header" type="radio" name="astar_heuristic" value="manhattan" checked />
+  <label class="option_label">Manhattan</label>
+</div>
+<div class="new_panel_col_bottom">
+  <input id="astar_header" type="radio" name="astar_heuristic" value="euclidean"/>
+  <label class="option_label">Euclidean</label>
+</div>
+<div class="new_panel_col_bottom" id="new_panel_col_bottom_second">
+  <input id="astar_header" type="radio" name="astar_heuristic" value="chebyshev"/>
+  <label class="option_label">Chebyshev</label>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="new_panel_row" id="new_panel_row">
+<div class="new_panel_col_top">A*</div>
+<div id="astar_section">
+<div id="astar_heuristic">
+<div class="new_panel_col_bottom" id="new_panel_col_bottom_first">
+  <input id="astar_header" type="radio" name="astar_heuristic" value="manhattan" checked />
+  <label class="option_label">Manhattan</label>
+</div>
+<div class="new_panel_col_bottom">
+  <input id="astar_header" type="radio" name="astar_heuristic" value="euclidean"/>
+  <label class="option_label">Euclidean</label>
+</div>
+<div class="new_panel_col_bottom" id="new_panel_col_bottom_second">
+  <input id="astar_header" type="radio" name="astar_heuristic" value="chebyshev"/>
+  <label class="option_label">Chebyshev</label>
+</div>
+</div>
+</div>
+</div> -->
