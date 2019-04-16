@@ -21,20 +21,56 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: -10px;
 }
 
-
 .panel {
     position: fixed;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
     border-radius: 8px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     cursor: default;
 }
 
+#instructions_panel {
+    font-family: sans-serif;
+    font: Trebuchet;
+    line-height: 1.5;
+    top: 20px;
+    left: 20px;
+    width: 550px;
+}
+
+#algorithm_panel {
+    font-family: sans-serif;
+    font: Trebuchet;
+    line-height: 1.5;
+    width: 280px;
+}
+.left_panel {
+    top: 500px;
+    left: 250px;
+}
+
+#heuristic_panel {
+    font-family: sans-serif;
+    font: Trebuchet;
+    line-height: 1.5;
+    width: 260px;
+}
+.central_panel {
+    top: 590px;
+    left: 645px;
+}
+
+#start_panel {
+    font-family: sans-serif;
+    font: Trebuchet;
+    line-height: 1.5;
+    width: 280px;
+}
 .right_panel {
-    width: 250px;
-    right: 20px;
+    top: 615px;
+    left: 1020px;
 }
 
 #new_panel {
@@ -81,17 +117,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px;
 }
 
-#algorithm_panel {
-    right: 20px;
-    top: 20px;
-}
-
-#instructions_panel {
-    top: 20px;
-    left: 20px;
-    width: 550px;
-}
-
 #hide_instructions {
     position: absolute;
     right: 25px;
@@ -132,7 +157,7 @@ button:hover {
 .finder_section {
     border: solid 1px #ddd;
     border-radius: 5px;
-    margin: 5px;
+    height: 0px;
 }
 
 .sub_options {
@@ -184,4 +209,8 @@ footer {
 
 .spinner {
     width: 2em;
+}
+
+#astar_section {
+  height: 1px;
 }

@@ -294,6 +294,7 @@ var View = {
             'operacje: ' + opts.operationCount
         ];
         $('#stats').show().html(texts.join('<br>'));
+        console.log( opts.timeSpent, opts.operationCount, Math.round(opts.pathLength * 100) / 100)
     },
     setCoordDirty: function(gridX, gridY, isDirty) {
         var x, y,

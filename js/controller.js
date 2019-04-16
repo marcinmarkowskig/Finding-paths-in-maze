@@ -220,7 +220,7 @@ $.extend(Controller, {
         // => [starting, draggingStart, draggingEnd, drawingStart, drawingEnd]
     },
     onstarting: function(event, from, to) {
-        console.log('=> starting');
+    //zmiana    console.log('=> starting');
         // Clears any existing search progress
         this.clearFootprints();
         this.setButtonStates({
@@ -231,7 +231,7 @@ $.extend(Controller, {
         // => searching
     },
     onsearching: function() {
-        console.log('=> searching');
+    //zmiana    console.log('=> searching');
         this.setButtonStates({
             id: 1,
             text: 'Restart Algorytmu',
@@ -261,7 +261,7 @@ $.extend(Controller, {
         // => [searching, ready]
     },
     onfinished: function() {
-        console.log('=> finished');
+    //zmiana    console.log('=> finished');
         this.setButtonStates({
             id: 1,
             text: 'Restart Algorytmu',
