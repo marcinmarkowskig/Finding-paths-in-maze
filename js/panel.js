@@ -31,7 +31,7 @@ var Panel = {
             '#algorithm_panel ' +
             '.ui-accordion-header[aria-selected=true]'
         ).attr('id');
-        console.log(selected_header)
+    //    console.log(selected_header)
 
         switch (selected_header) {
 
@@ -41,7 +41,7 @@ var Panel = {
 
             //stare heuristic = $('input[name=astar_heuristic]:checked').val();
             heuristic = $('input[name=proba]:checked').val();
-            console.log('Astar', heuristic)
+      //      console.log('Astar', heuristic)
                 finder = new PF.AStarFinder({
                     heuristic: PF.Heuristic[heuristic],
                     weight: weight
@@ -54,7 +54,7 @@ var Panel = {
 
             //stary heuristic = $('input[name=astarBi_heuristic]:checked').val();
             heuristic = $('input[name=proba]:checked').val();
-            console.log('AstarBi', heuristic)
+        //    console.log('AstarBi', heuristic)
                 finder = new PF.BiAStarFinder({
                     heuristic: PF.Heuristic[heuristic],
                     weight: weight
@@ -64,7 +64,7 @@ var Panel = {
         case 'bestfirst_header':
             //stare heuristic = $('input[name=bestfirst_heuristic]:checked').val();
             heuristic = $('input[name=proba]:checked').val();
-            console.log('BestFirst', heuristic)
+        //    console.log('BestFirst', heuristic)
                 finder = new PF.BestFirstFinder({
                     heuristic: PF.Heuristic[heuristic]
                 });
@@ -73,7 +73,7 @@ var Panel = {
         case 'bestfirstBi_header':
             //stare heuristic = $('input[name=bestfirstBi_heuristic]:checked').val();
             heuristic = $('input[name=proba]:checked').val();
-            console.log('bestfirstBi', heuristic)
+      //      console.log('bestfirstBi', heuristic)
                 finder = new PF.BiBestFirstFinder({
                     heuristic: PF.Heuristic[heuristic]
                 });
@@ -82,7 +82,7 @@ var Panel = {
         case 'orth_jump_point_header':
         //stare  heuristic = $('input[name=orth_jump_point_heuristic]:checked').val();
           heuristic = $('input[name=proba]:checked').val();
-            console.log('orth', heuristic)
+        //    console.log('orth', heuristic)
             finder = new PF.OrthogonalJumpPointFinder({
               heuristic: PF.Heuristic[heuristic],
             });
@@ -91,7 +91,7 @@ var Panel = {
         case 'ida_header':
             //stare heuristic = $('input[name=ida_heuristic]:checked').val();
             heuristic = $('input[name=proba]:checked').val();
-            console.log('ida', heuristic)
+          //  console.log('ida', heuristic)
             weight = parseInt($('#ida_section .spinner').val()) || 1;
             weight = weight >= 1 ? weight : 1; /* if negative or 0, use 1 */
 
